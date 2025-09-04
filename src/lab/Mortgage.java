@@ -12,14 +12,24 @@ public class Mortgage {
     public static void main(String...args) {
         // adding user inputs
         Scanner userInput = new Scanner(System.in);
-        System.out.print("Enter amount: ");
-        userInput.nextLine();
 
-        System.out.print("Enter rate: ");
-        userInput.nextLine();
+        try {
+            System.out.print("Enter amount: ");
+            String userPrincipal = userInput.nextLine();
+            int principal = Integer.parseInt(userPrincipal);
 
-        System.out.print("Enter duration period: ");
-        userInput.nextLine();
+            System.out.print("Enter rate: ");
+            double rate = Double.parseDouble(userInput.nextLine());
+
+            System.out.print("Enter duration period: ");
+            byte duration = Byte.parseByte(userInput.nextLine());
+
+            double mortgageAmount = calcMortgage(principal, rate, duration);
+            System.out.println("mortgage amount: " + mortgageAmount);
+
+        } catch (NumberFormatException e) {
+            System.out.println("An error occurred. You have to enter a number");
+        }
 
         userInput.close();
 
